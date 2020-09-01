@@ -1,17 +1,17 @@
-class ZCL_WPS_ROMAN_CONVERTER definition
-  public
-  final
-  create public .
+CLASS zcl_wps_roman_converter DEFINITION
+  PUBLIC
+  FINAL
+  CREATE PUBLIC .
 
-public section.
+  PUBLIC SECTION.
 
-  constants ERROR_VALUE type I value -1 ##NO_TEXT.
+    CONSTANTS error_value TYPE i VALUE -1 ##NO_TEXT.
 
-  methods TO_ARABIC
-    importing
-      !I_ROMAN_NUMERAL type STRING
-    returning
-      value(R_ARABIC) type I .
+    METHODS to_arabic
+      IMPORTING
+        !i_roman_numeral TYPE string
+      RETURNING
+        VALUE(r_arabic)  TYPE i .
   PROTECTED SECTION.
   PRIVATE SECTION.
     METHODS value_of_roman_digit
@@ -23,7 +23,7 @@ ENDCLASS.
 
 
 
-CLASS ZCL_WPS_ROMAN_CONVERTER IMPLEMENTATION.
+CLASS zcl_wps_roman_converter IMPLEMENTATION.
 
 
   METHOD to_arabic.
@@ -91,6 +91,7 @@ CLASS ZCL_WPS_ROMAN_CONVERTER IMPLEMENTATION.
       WHEN 'X'. r_arabic = 10.
       WHEN 'L'. r_arabic = 50.
       WHEN 'C'. r_arabic = 100.
+      WHEN 'D'. r_arabic = 500.
       WHEN 'M'. r_arabic = 1000.
       WHEN OTHERS.  r_arabic = error_value.
     ENDCASE.
